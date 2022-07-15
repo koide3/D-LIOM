@@ -26,8 +26,8 @@
           -save_traj_nodes_filename $(arg save_traj_nodes_filename)"
       output="screen">
     <remap from="imu" to="/imu/imu" />
-    <remap from="points2" to="/os1_cloud_node1/points" />
-    <!-- <remap from="points2_2" to="/os1_cloud_node2/points" /> -->
+    <remap from="points2_1" to="/os1_cloud_node1/points" />
+    <remap from="points2_2" to="/os1_cloud_node2/points" />
   </node>
 
   <node name="cartographer_occupancy_grid_node" pkg="cartographer_ros"
@@ -38,7 +38,7 @@
   </node>
   
   <node name="playbag" pkg="rosbag" type="play" required="true" args="
-    --clock $(arg bag_filename) -r 3">
+    --clock -r 3 $(arg bag_filename)">
   </node>
 
 </launch>
